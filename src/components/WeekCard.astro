@@ -1,0 +1,81 @@
+---
+import type { Week } from '../data/weeks';
+
+interface Props {
+  week: Week;
+}
+
+const { week } = Astro.props;
+
+const typeLabel: Record<string, string> = {
+  reading: 'Book',
+  video: 'Video',
+  docs: 'Docs',
+  blog: 'Blog',
+  paper: 'Paper',
+  lab: 'Lab',
+  podcast: 'Podcast',
+};
+---
+
+<article class="week" id={`week-${week.n}`}>
+  <header class="week-header">
+    <span class="week-number">Week {week.n}</span>
+    <h2 class="week-title">{week.title}</h2>
+  </header>
+
+  <p class="week-goal">{week.goal}</p>
+
+  <section class="section">
+    <h3 class="section-title">Resources</h3>
+    <ul class="resources">
+      {week.resources.map((r, i) => (
+        <li class="resource">
+          <label class="resource-row">
+            <input
+              type="checkbox"
+              class="progress-item"
+              data-week={week.n}
+              data-item={`r-${i}`}
+            />
+            <span class="resource-type">{typeLabel[r.type] ?? r.type}</span>
+            <span class="resource-body">
+              <a href={r.url} target="_blank" rel="noopener noreferrer">
+                {r.title}
+              </a>
+              {r.paywalled && <span class="paywalled" title="Paid resource">$</span>}
+              <span class="resource-source">{r.source}</span>
+              <span class="resource-note">{r.note}</span>
+            </span>
+          </label>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="section">
+    <h3 class="section-title">Exercise</h3>
+    <label class="item-row">
+      <input
+        type="checkbox"
+        class="progress-item"
+        data-week={week.n}
+        data-item="exercise"
+      />
+      <span>{week.exercise}</span>
+    </label>
+  </section>
+
+  <section class="section">
+    <h3 class="section-title">Checkpoint</h3>
+    <label class="item-row">
+      <input
+        type="checkbox"
+        class="progress-item"
+        data-week={week.n}
+        data-item="checkpoint"
+      />
+      <span>{week.checkpoint}</span>
+    </label>
+  </section>
+</article>

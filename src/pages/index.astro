@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WeekCard from '../components/WeekCard.astro';
+import ProgressTracker from '../components/ProgressTracker.astro';
+import { weeks } from '../data/weeks';
+import '../styles/global.css';
+
+const totalItems = weeks.reduce(
+  (acc, w) => acc + w.resources.length + 2,
+  0
+);
+
+const upcoming = [
+  { title: 'Month 3-4 — Prompt Injection in Depth + First Detector', status: 'locked' },
+  { title: 'Month 5-6 — Threat Models, PII at Scale, Audit Output', status: 'locked' },
+  { title: 'Month 7-8 — Release-Quality Security Tooling', status: 'locked' },
+  { title: 'Month 9-10 — Canary Tokens, LATAM PII, Red-Team Automation', status: 'locked' },
+  { title: 'Month 11-12 — Agents, MCP Security, Public Talks', status: 'locked' },
+];
+---
+
+<BaseLayout
+  title="AI Security Roadmap — From AppSec to AI Security"
+  description="A curated 8-week roadmap for AppSec engineers pivoting to AI Security. Books, papers, videos, labs. No filler. Free."
+>
+  <main class="wrap">
+    <header class="hero">
+      <p class="eyebrow">AI Security Roadmap</p>
+      <h1>From AppSec to AI Security</h1>
+      <p class="lead">
+        A curated 8-week roadmap for software and security engineers pivoting into AI Security.
+        Only the resources worth your time. No tutorials, no filler. Follow the weeks in order.
+      </p>
+      <ul class="meta">
+        <li>12 hours / week</li>
+        <li>8 weeks</li>
+        <li>Free</li>
+        <li>CC-BY 4.0</li>
+      </ul>
+    </header>
+
+    <ProgressTracker totalItems={totalItems} />
+
+    <section class="intro">
+      <h2>Who this is for</h2>
+      <p>
+        You have a background in software engineering or application security
+        and you want to work on AI systems without becoming an ML researcher.
+        You can read English technical content and you have ~12 hours per week.
+      </p>
+      <h2>How to use it</h2>
+      <p>
+        Follow the weeks in order. Each week contains reading, videos, docs or papers,
+        one practical exercise, and one self-evaluated checkpoint. Mark items as you go —
+        progress is stored in your browser only.
+      </p>
+      <p>
+        Some resources are paid books (marked <span class="paywalled inline">$</span>).
+        If you cannot buy them, the paper and blog equivalents are enough to follow along.
+      </p>
+    </section>
+
+    <section class="weeks">
+      {weeks.map((w) => <WeekCard week={w} />)}
+    </section>
+
+    <section class="upcoming">
+      <h2>Upcoming — to unlock</h2>
+      <p class="upcoming-note">
+        These months will be published as their author completes them.
+        The roadmap grows one bimester at a time, in sync with real field study.
+      </p>
+      <ul>
+        {upcoming.map((u) => (
+          <li class="locked-item">
+            <span class="lock">Locked</span>
+            <span>{u.title}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="non-goals">
+      <h2>What this roadmap does not cover</h2>
+      <ul>
+        <li>Certification preparation (no AI security cert is yet worth the time).</li>
+        <li>Academic surveys. This is a practitioner path, not a literature review.</li>
+        <li>Building or training models from scratch.</li>
+        <li>Agent security and MCP — scheduled for months 11-12.</li>
+        <li>Vendor-specific guardrails at depth — covered only at an overview level.</li>
+      </ul>
+    </section>
+
+    <footer class="site-footer">
+      <p>
+        Maintained by Facundo Ibarzabal.
+        Feedback: <a href="mailto:facundoibarzabal@gmail.com">facundoibarzabal@gmail.com</a>
+      </p>
+      <p class="small">
+        Text on this page is licensed under
+        <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">
+          CC-BY 4.0
+        </a>.
+        Linked third-party resources retain their original licenses.
+      </p>
+    </footer>
+  </main>
+</BaseLayout>
