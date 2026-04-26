@@ -6,7 +6,12 @@ import { weeks } from '../data/weeks';
 import '../styles/global.css';
 
 const totalItems = weeks.reduce(
-  (acc, w) => acc + w.resources.length + 2,
+  (acc, w) =>
+    acc +
+    w.resources.length +
+    (w.supplementaryResources?.length ?? 0) +
+    (w.prerequisites?.length ?? 0) +
+    2,
   0
 );
 

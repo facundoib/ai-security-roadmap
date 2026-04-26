@@ -14,8 +14,10 @@ export interface Week {
   title: string;
   goal: string;
   resources: Resource[];
+  supplementaryResources?: Resource[];
   exercise: string;
   checkpoint: string;
+  prerequisites?: string[];
 }
 
 export const weeks: Week[] = [
@@ -47,8 +49,38 @@ export const weeks: Week[] = [
         note: 'State-of-the-field annual summary. Orients everything else.',
       },
     ],
+    supplementaryResources: [
+      {
+        type: 'video',
+        title: '¿Qué es un TRANSFORMER? La Red Neuronal que lo cambió TODO',
+        source: 'Dot CSV',
+        url: 'https://www.youtube.com/watch?v=aL-EmKuB078',
+        note: 'Spanish-language walkthrough of the 2017 paper. Pairs cleanly with Alammar Ch. 1.',
+      },
+      {
+        type: 'video',
+        title: 'RNN and attention — visual reinforcement',
+        source: 'YouTube',
+        url: 'https://www.youtube.com/watch?v=RkYuH_K7Fx4',
+        note: 'Use as a refresher on RNNs and the attention intuition before moving on.',
+      },
+      {
+        type: 'blog',
+        title: 'Mecanismos de Atención',
+        source: 'Juan Sensio',
+        url: 'https://www.juansensio.com/blog/060_attention',
+        note: 'Spanish technical blog covering hard, soft, and self-attention.',
+      },
+    ],
     exercise: 'Install Ollama. Pull a small model (llama3.2:3b or similar). Send the same question 5 times at temperature 0 and 5 times at temperature 1. Save outputs.',
     checkpoint: 'In 2 sentences: what is a token, and why does rewording a prompt change the output?',
+    prerequisites: [
+      'What a token is and how it differs from a character or a word',
+      'Why rewording the same prompt changes the output',
+      'What `temperature` controls and how determinism trades off against variety',
+      'The conceptual difference between an LLM, a search engine, and a rule-based system',
+      'When you would reach for an encoder-only, decoder-only, or encoder-decoder model',
+    ],
   },
   {
     n: 2,
@@ -87,6 +119,13 @@ export const weeks: Week[] = [
     ],
     exercise: 'With Ollama, run the same prompt 10 times at temperature 0 and 10 times at temperature 1. Count how many outputs are byte-identical in each group. Explain the result.',
     checkpoint: 'Explain attention to a backend engineer who has never seen it, in 3 sentences.',
+    prerequisites: [
+      'How self-attention lets every token see every other token in the input',
+      'Why pure attention is permutation-invariant and needs positional encoding',
+      'The roles of Q, K, V vectors at a high level',
+      'Why multi-head attention works better than single-head',
+      'The architectural reason prompt injection works: no separation between instruction and data tokens',
+    ],
   },
   {
     n: 3,
@@ -125,6 +164,12 @@ export const weeks: Week[] = [
     ],
     exercise: 'Pick a public LLM application (any chatbot, Copilot, search assistant). Write a 1-page threat model naming which of LLM01-LLM10 apply and why. No solutions yet — just enumerate.',
     checkpoint: 'Recite LLM01-LLM10 from memory with a 1-line description each.',
+    prerequisites: [
+      'All ten OWASP LLM Top 10 categories with a one-line description each',
+      'The difference between LLM01 (prompt injection) and LLM02 (sensitive info disclosure)',
+      'How MITRE ATLAS complements OWASP LLM Top 10 instead of duplicating it',
+      'Why the threat model of an LLM application is structurally different from a classic web app',
+    ],
   },
   {
     n: 4,
@@ -163,6 +208,12 @@ export const weeks: Week[] = [
     ],
     exercise: 'Against a free-tier consumer chatbot, attempt 5 direct injection variants (role hijack, delimiter break, instruction override, Unicode smuggling, tool-call manipulation). Document what worked and what was blocked. Do nothing harmful.',
     checkpoint: 'Explain direct vs indirect prompt injection with one concrete example of each.',
+    prerequisites: [
+      'Direct vs indirect prompt injection with one concrete example of each',
+      'Why no current architecture can fully distinguish instruction tokens from data tokens',
+      'The classic injection families: role hijack, delimiter break, instruction override, Unicode smuggling',
+      'The link between RAG architecture and indirect injection as a delivery vector',
+    ],
   },
   {
     n: 5,
@@ -201,6 +252,12 @@ export const weeks: Week[] = [
     ],
     exercise: 'Write a TypeScript (or Python) function that detects one government ID from your country using regex + checksum. Test it against 10 synthetic inputs (5 valid, 5 invalid). Do not use real data.',
     checkpoint: 'List the 3 points in an LLM pipeline where PII can leak, in order of occurrence.',
+    prerequisites: [
+      'The three points in an LLM pipeline where PII can leak (input, system prompt, output)',
+      'Why generic DLP tools fail on LATAM identifiers (DNI, CPF, CURP, RFC, RUT)',
+      'The difference between PII in training data and PII in runtime traffic',
+      'What a deterministic recognizer is and why it scales better than ML-based PII detection',
+    ],
   },
   {
     n: 6,
@@ -239,6 +296,12 @@ export const weeks: Week[] = [
     ],
     exercise: 'Pick 3 random models from Hugging Face trending. For each, write a 5-line risk assessment: license, training data claim, author reputation, download count, license compatibility with commercial use.',
     checkpoint: 'Name 3 supply-chain risks unique to LLM deployments that do not exist in classic web apps.',
+    prerequisites: [
+      'Three supply-chain risks unique to LLM deployments that do not exist in classic web apps',
+      'What model poisoning is and why the Carlini et al. paper matters',
+      'The metadata a security review should require for any third-party model (license, training data, author, downloads)',
+      'Why "I trust the Hugging Face badge" is not a risk assessment',
+    ],
   },
   {
     n: 7,
@@ -276,6 +339,12 @@ export const weeks: Week[] = [
     ],
     exercise: 'Install Promptfoo. Write a YAML config that runs 5 prompt injection probes against a local Ollama model. Run it. Commit the config and the output report to a personal repo.',
     checkpoint: 'Explain the difference between static and adversarial evals in 2 sentences.',
+    prerequisites: [
+      'The difference between static and adversarial evals',
+      'When to reach for an eval harness (Promptfoo) vs a vulnerability scanner (Garak)',
+      'Why naive eval pass-rates are misleading without statistical framing',
+      'What a guardrail is at the architectural level, independent of any specific framework',
+    ],
   },
   {
     n: 8,
@@ -313,5 +382,11 @@ export const weeks: Week[] = [
     ],
     exercise: 'Run Garak against a local Ollama model with 1 probe class (suggested: "promptinject" or "dan"). Save the report. Fork or star one open-source LLM security project that was useful during these 8 weeks.',
     checkpoint: 'Publish one public artifact: a blog post, LinkedIn post, or GitHub README summarizing the most surprising thing you learned across these 8 weeks. This is the first public output of your AI Security pivot. Link it in this checkpoint.',
+    prerequisites: [
+      'How fuzzing applied to LLMs differs from fuzzing classical software',
+      'The difference between manual red-teaming and automated red-teaming',
+      'What a probe is in Garak and how probes compose into a scan',
+      'How success against an LLM is actually measured beyond "did the jailbreak work"',
+    ],
   },
 ];

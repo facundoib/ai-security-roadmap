@@ -53,6 +53,35 @@ const typeLabel: Record<string, string> = {
     </ul>
   </section>
 
+  {week.supplementaryResources && week.supplementaryResources.length > 0 && (
+    <section class="section">
+      <h3 class="section-title">Supplementary resources</h3>
+      <ul class="resources">
+        {week.supplementaryResources.map((r, i) => (
+          <li class="resource">
+            <label class="resource-row">
+              <input
+                type="checkbox"
+                class="progress-item"
+                data-week={week.n}
+                data-item={`s-${i}`}
+              />
+              <span class="resource-type">{typeLabel[r.type] ?? r.type}</span>
+              <span class="resource-body">
+                <a href={r.url} target="_blank" rel="noopener noreferrer">
+                  {r.title}
+                </a>
+                {r.paywalled && <span class="paywalled" title="Paid resource">$</span>}
+                <span class="resource-source">{r.source}</span>
+                <span class="resource-note">{r.note}</span>
+              </span>
+            </label>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
   <section class="section">
     <h3 class="section-title">Exercise</h3>
     <label class="item-row">
@@ -78,4 +107,25 @@ const typeLabel: Record<string, string> = {
       <span>{week.checkpoint}</span>
     </label>
   </section>
+
+  {week.prerequisites && week.prerequisites.length > 0 && (
+    <section class="section">
+      <h3 class="section-title">Master before next week</h3>
+      <ul class="prerequisites">
+        {week.prerequisites.map((p, i) => (
+          <li>
+            <label class="item-row">
+              <input
+                type="checkbox"
+                class="progress-item"
+                data-week={week.n}
+                data-item={`p-${i}`}
+              />
+              <span>{p}</span>
+            </label>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
 </article>
