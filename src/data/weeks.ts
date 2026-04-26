@@ -40,11 +40,11 @@ export const weeks: Week[] = [
         note: 'Non-negotiable. Watch once at 1x, take notes.',
       },
       {
-        type: 'docs',
-        title: 'Prompt engineering overview',
-        source: 'Anthropic',
-        url: 'https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview',
-        note: 'Current, opinionated, vendor-neutral framing under vendor docs.',
+        type: 'blog',
+        title: 'What Is ChatGPT Doing… and Why Does It Work?',
+        source: 'Stephen Wolfram',
+        url: 'https://writings.stephenwolfram.com/2023/02/what-is-chatgpt-doing-and-why-does-it-work/',
+        note: 'Best non-ML mechanistic explanation of token-by-token generation. Long-form, worth the time.',
       },
       {
         type: 'blog',
