@@ -41,13 +41,6 @@ export const weeks: Week[] = [
       },
       {
         type: 'blog',
-        title: 'What Is ChatGPT Doing… and Why Does It Work?',
-        source: 'Stephen Wolfram',
-        url: 'https://writings.stephenwolfram.com/2023/02/what-is-chatgpt-doing-and-why-does-it-work/',
-        note: 'Best non-ML mechanistic explanation of token-by-token generation. Long-form, worth the time.',
-      },
-      {
-        type: 'blog',
         title: 'Things we learned about LLMs in 2024',
         source: 'Simon Willison',
         url: 'https://simonwillison.net/2024/Dec/31/llms-in-2024/',
