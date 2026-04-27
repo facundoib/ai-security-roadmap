@@ -1,0 +1,107 @@
+name: Suggest a resource
+description: Propose adding a book, paper, video, blog post, doc, lab, or podcast to a specific week.
+title: "[Resource] W?: <short title>"
+labels: ["resource-suggestion"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a resource. The roadmap is intentionally short — every addition has to displace something or close a real gap. Please answer the questions concretely so the maintainer can decide quickly.
+
+  - type: dropdown
+    id: week
+    attributes:
+      label: Which week
+      description: If the resource spans multiple weeks, pick the earliest one it applies to.
+      options:
+        - "Week 1 — LLM Foundations I"
+        - "Week 2 — LLM Foundations II"
+        - "Week 3 — OWASP LLM Top 10"
+        - "Week 4 — Prompt Injection"
+        - "Week 5 — Sensitive Information Disclosure"
+        - "Week 6 — Supply Chain and Model Risks"
+        - "Week 7 — Evals and Guardrails"
+        - "Week 8 — Fuzzing, Red-Teaming, First Public Output"
+        - "Cross-week / general"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: Resource type
+      options:
+        - reading
+        - video
+        - docs
+        - blog
+        - paper
+        - lab
+        - podcast
+    validations:
+      required: true
+
+  - type: input
+    id: title
+    attributes:
+      label: Title
+      placeholder: e.g. The Illustrated Transformer
+    validations:
+      required: true
+
+  - type: input
+    id: source
+    attributes:
+      label: Source / author
+      description: Person, organization, or publisher.
+      placeholder: e.g. Jay Alammar / OWASP / Anthropic
+    validations:
+      required: true
+
+  - type: input
+    id: url
+    attributes:
+      label: URL
+      placeholder: https://...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: paywalled
+    attributes:
+      label: Paywalled?
+      options:
+        - "No — free to access"
+        - "Yes — paid book / course / subscription"
+    validations:
+      required: true
+
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it belongs in this week
+      description: |
+        Be specific. What does it cover that the existing resources for that week do not? If it overlaps with an existing resource, say which one and why this is better.
+      placeholder: |
+        Example: "Closes the gap between Karpathy's intro and Alammar Ch. 3 — explains positional encoding visually, which neither of the current W2 resources do."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: action
+    attributes:
+      label: Add or replace
+      options:
+        - "Add as a new resource"
+        - "Replace an existing resource (specify which in the field below)"
+        - "Add to supplementaryResources (non-canonical reinforcement)"
+    validations:
+      required: true
+
+  - type: input
+    id: replaces
+    attributes:
+      label: If replacing, which existing resource?
+      placeholder: e.g. "Wolfram blog in W1"
+    validations:
+      required: false

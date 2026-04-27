@@ -1,0 +1,29 @@
+name: Typo, broken link, or factual error
+description: Report a typo, dead URL, wrong attribution, or factual mistake.
+title: "[Fix] <short description>"
+labels: ["fix"]
+body:
+  - type: input
+    id: where
+    attributes:
+      label: Where
+      description: Week number and resource title, or section of the page.
+      placeholder: e.g. "Week 3, MITRE ATLAS link" / "Site footer"
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is wrong
+      description: Quote the exact text or paste the broken URL.
+    validations:
+      required: true
+
+  - type: textarea
+    id: fix
+    attributes:
+      label: Suggested fix
+      description: Optional — what should it say or link to instead.
+    validations:
+      required: false

@@ -37,6 +37,8 @@ Source code in this repository: [MIT](./LICENSE).
 
 Linked third-party resources retain their original licenses.
 
-## Contact
+## Feedback
 
-[facundoibarzabal@gmail.com](mailto:facundoibarzabal@gmail.com)
+Resource suggestions, typos, and broken links: [open an issue](https://github.com/facundoib/ai-security-roadmap/issues/new/choose). The roadmap is opinionated and centrally curated — PRs against content are not accepted, but issues are read. See [CONTRIBUTING.md](./CONTRIBUTING.md).
+
+For anything off-topic: [facundoibarzabal@gmail.com](mailto:facundoibarzabal@gmail.com).
