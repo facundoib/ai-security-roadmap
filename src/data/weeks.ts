@@ -337,6 +337,15 @@ export const weeks: Week[] = [
         note: 'Read the intro and architecture overview. Do not install — just understand the model.',
       },
     ],
+    supplementaryResources: [
+      {
+        type: 'docs',
+        title: 'Amazon Bedrock Guardrails — Overview',
+        source: 'AWS',
+        url: 'https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails.html',
+        note: 'Closest cloud-managed analog to library-based guardrails. Skim to understand the trade-off between managed services and self-hosted detection.',
+      },
+    ],
     exercise: 'Install Promptfoo. Write a YAML config that runs 5 prompt injection probes against a local Ollama model. Run it. Commit the config and the output report to a personal repo.',
     checkpoint: 'Explain the difference between static and adversarial evals in 2 sentences.',
     prerequisites: [
@@ -344,6 +353,7 @@ export const weeks: Week[] = [
       'When to reach for an eval harness (Promptfoo) vs a vulnerability scanner (Garak)',
       'Why naive eval pass-rates are misleading without statistical framing',
       'What a guardrail is at the architectural level, independent of any specific framework',
+      'How adversarial drift decays signature-based detection over time, and what monitoring catches it',
     ],
   },
   {
