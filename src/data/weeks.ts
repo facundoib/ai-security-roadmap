@@ -141,10 +141,10 @@ export const weeks: Week[] = [
       },
       {
         type: 'reading',
-        title: 'The Developer\'s Playbook for LLM Security — Chapters 1-2',
+        title: 'The Developer\'s Playbook for LLM Security — Ch. 1 "Chatbots Breaking Bad" + Ch. 2 "The OWASP Top 10 for LLM Applications"',
         source: 'Steve Wilson (O\'Reilly, 2024)',
         url: 'https://www.oreilly.com/library/view/the-developers-playbook/9781098162191/',
-        note: 'Wilson co-leads OWASP LLM Top 10. Book = extended commentary on the spec.',
+        note: 'Wilson co-leads OWASP LLM Top 10. Ch. 1 frames the problem via the Tay incident; Ch. 2 explains how the Top 10 list was assembled.',
         paywalled: true,
       },
       {
@@ -205,6 +205,14 @@ export const weeks: Week[] = [
         url: 'https://www.youtube.com/watch?v=zP_SHRdPZ4Y',
         note: '30 min. The plain-English version of the paper.',
       },
+      {
+        type: 'reading',
+        title: 'The Developer\'s Playbook for LLM Security — Ch. 4 "Prompt Injection"',
+        source: 'Steve Wilson (O\'Reilly, 2024)',
+        url: 'https://www.oreilly.com/library/view/the-developers-playbook/9781098162191/',
+        note: 'Direct vs indirect taxonomy, then six mitigations (rate limiting, rule-based filters, special-purpose LLM filtering, prompt structure, adversarial training, pessimistic trust boundaries) from the spec co-author.',
+        paywalled: true,
+      },
     ],
     exercise: 'Against a free-tier consumer chatbot, attempt 5 direct injection variants (role hijack, delimiter break, instruction override, Unicode smuggling, tool-call manipulation). Document what worked and what was blocked. Do nothing harmful.',
     checkpoint: 'Explain direct vs indirect prompt injection with one concrete example of each.',
@@ -222,10 +230,10 @@ export const weeks: Week[] = [
     resources: [
       {
         type: 'reading',
-        title: 'The Developer\'s Playbook for LLM Security — Chapter on data leaks',
+        title: 'The Developer\'s Playbook for LLM Security — Ch. 5 "Can Your LLM Know Too Much?"',
         source: 'Steve Wilson (O\'Reilly, 2024)',
         url: 'https://www.oreilly.com/library/view/the-developers-playbook/9781098162191/',
-        note: 'Wilson\'s chapter on LLM02 is the cleanest short treatment available.',
+        note: 'Maps the four knowledge-acquisition paths (training, fine-tuning, RAG, live web/DB access) to leak surfaces. Real-world examples: Lee Luda, GitHub Copilot / OpenAI Codex.',
         paywalled: true,
       },
       {
@@ -266,10 +274,10 @@ export const weeks: Week[] = [
     resources: [
       {
         type: 'reading',
-        title: 'The Developer\'s Playbook for LLM Security — Chapters 4-5',
+        title: 'The Developer\'s Playbook for LLM Security — Ch. 9 "Find the Weakest Link" + Ch. 7 "Trust No One"',
         source: 'Steve Wilson (O\'Reilly, 2024)',
         url: 'https://www.oreilly.com/library/view/the-developers-playbook/9781098162191/',
-        note: 'Supply chain + insecure output handling, from the spec co-author.',
+        note: 'Ch. 9 covers the LLM supply chain (open-source model risk, training-data poisoning, plug-ins, SBOMs, ML-BOM, CycloneDX). Ch. 7 covers improper output handling (zero trust, regex PII filters, toxicity, sanitization) — LLM05 in OWASP 2025.',
         paywalled: true,
       },
       {
