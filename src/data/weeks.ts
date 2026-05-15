@@ -149,10 +149,10 @@ export const weeks: Week[] = [
       },
       {
         type: 'video',
-        title: 'OWASP LLM Top 10 v1.1 launch talk',
-        source: 'Steve Wilson — OWASP Global AppSec',
-        url: 'https://www.youtube.com/watch?v=uGWoQvXwHBM',
-        note: 'Author explains the rationale behind each risk class. 45 min.',
+        title: 'OWASP Top 10 for Large Language Models: Project Update',
+        source: 'Steve Wilson & Scott Clinton — OWASP GenAI Security Project (2025)',
+        url: 'https://www.youtube.com/watch?v=1xUTxLhV07g',
+        note: 'Project co-leads walk through the 2025 list and explain the rationale behind each risk class.',
       },
       {
         type: 'docs',
