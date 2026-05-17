@@ -41,15 +41,15 @@ export const weeks: Week[] = [
         url: 'https://www.youtube.com/watch?v=zjkBMFhNj_g',
         note: 'Non-negotiable. Watch once at 1x, take notes.',
       },
-      {
-        type: 'blog',
-        title: 'Things we learned about LLMs in 2024',
-        source: 'Simon Willison',
-        url: 'https://simonwillison.net/2024/Dec/31/llms-in-2024/',
-        note: 'State-of-the-field annual summary. Orients everything else.',
-      },
     ],
     supplementaryResources: [
+      {
+        type: 'blog',
+        title: '2025: The year in LLMs',
+        source: 'Simon Willison',
+        url: 'https://simonwillison.net/2025/Dec/31/the-year-in-llms/',
+        note: 'Annual state-of-the-field summary. Use for landscape orientation, not for the mental model itself.',
+      },
       {
         type: 'video',
         title: '¿Qué es un TRANSFORMER? La Red Neuronal que lo cambió TODO',
